@@ -1,0 +1,16 @@
+## requirements.txt
+## used by https://github.com/ifrankandrade/automation
+## and fork https://github.com/mvilain/python-automation
+## use this with a virtual environment 
+## (e.g. python3 -m venv <path>; python3 -m pip install -r requirements)
+pathlib
+camelot
+pandas
+openpyxl
+selenium
+
+## the following are part of the standard Library install
+## they don't need to be listed here but are used by this repo
+#email
+#ssl
+#time
