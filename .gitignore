@@ -8,6 +8,9 @@
 .idea/
 *.mp4
 **/venv/*
+.pytest_cache
+.hypothesis
+.ipynb_checkpoints
 
 
 # python cache files
