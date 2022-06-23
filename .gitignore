@@ -8,6 +8,7 @@
 .idea/
 *.mp4
 **/venv/*
+**/virtualenv/*
 .pytest_cache
 .hypothesis
 .ipynb_checkpoints
