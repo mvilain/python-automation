@@ -6,13 +6,14 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 import pandas as pd
-import os, sys
-PROG = os.path.basename( sys.argv[0] )
+import os
+import sys
+PROG = os.path.basename(sys.argv[0])
 PATH = os.path.expanduser('~/Downloads/chromedriver')  # introduce path here
 OUT = 'headline.csv'
 WEB = 'https://www.thesun.co.uk/sport/football/'
 
-print('{}--> {}'.format(PROG,WEB),end='',flush=True)
+print('{}--> {}'.format(PROG, WEB), end='', flush=True)
 # Creating the driver
 driver_service = Service(executable_path=PATH)
 driver = webdriver.Chrome(service=driver_service)
@@ -31,12 +32,12 @@ for container in containers:
     titles.append(title)
     subtitles.append(subtitle)
     links.append(link)
-    print(".",end='',flush=True)
+    print(".", end='', flush=True)
 
 # Exporting data to a CSV file
 my_dict = {'title': titles, 'subtitle': subtitles, 'link': links}
 df_headlines = pd.DataFrame(my_dict)
 df_headlines.to_csv(OUT)
-print("{} {} entries".format(OUT,len(titles)))
+print("{} {} entries".format(OUT, len(titles)))
 driver.quit()
 exit(0)
