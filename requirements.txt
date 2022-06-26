@@ -17,6 +17,7 @@ pandas
 openpyxl
 
 selenium
+pyinstaller
 
 ## the following are part of the standard Library install
 ## they don't need to be listed here but are used by this repo
