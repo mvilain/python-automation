@@ -9,14 +9,15 @@
 *.mp4
 **/venv/*
 **/virtualenv/*
-.pytest_cache
 .hypothesis
 .ipynb_checkpoints
-
+**/build/*
+**/dist/*
+*.spec
 
 # python cache files
 __pycache__/
-
+.pytest_cache
 
 # Crash log files
 crash.log
