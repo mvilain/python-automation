@@ -1,8 +1,10 @@
 ## requirements.txt
 ## used by https://github.com/ifrankandrade/automation
 ## and fork https://github.com/mvilain/python-automation
-## use this with a virtual environment 
-## (e.g. python3 -m venv <path>; python3 -m pip install -r requirements)
+## use this with a python virtual environment
+## (e.g. python3 -m virtualenvironment virtualenv; source virtualenv/bin/activate; python3 -m pip install -r requirements)
+#####    DO NOT ALLOW PYCHARM or INTELLIJ to install these modules
+#####    it will install them into the system directory...use the commands above
 pathlib
 
 ## https://camelot-py.readthedocs.io/en/master/user/install-deps.html
