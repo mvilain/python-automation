@@ -2,7 +2,7 @@
 # 3.news-automation.py
 # extract information from a site using Xpath's chrome webdriver
 # this will NOT open a browser but extract the pages from the URL anyway
-# name output file with date so it can be run via cron regularly
+# name output file with date, so it can be run via cron regularly
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -17,8 +17,10 @@ PROG = os.path.basename(sys.argv[0])
 DRIVER_PATH = os.path.expanduser('~/Downloads/chromedriver')
 
 OUT_FILE = 'football_headlines_{}.csv'.format(datetime.now().strftime("%Y%m%d"))
-## os.path.join ensures name is not OS dependent (e.g. directory seperator MacOS="/", Win="\")
-## but I don't want the file stored where python is stored so commented out
+"""
+# os.path.join ensures name is not OS dependent (e.g. directory seperator MacOS="/", Win="\")
+# but I don't want the file stored where python is stored so commented out
+"""
 # OUT_FILE = os.path.join(os.path.dirname(sys.executable), OUT_FILE)
 
 print('{}--> driver.web('.format(PROG), end='', flush=True)
@@ -54,4 +56,3 @@ df_headlines.to_csv(OUT_FILE)
 print(" {} [{} entries]".format(OUT_FILE, len(titles)))
 
 driver.quit()
-exit(0)
