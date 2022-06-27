@@ -3,17 +3,58 @@
 forked from https://github.com/ifrankandrade/automation
 
 ## Environment
-This repo contains the course materials for the FreeCode course on python automation. It uses non-standard libraries (i.e. not usually installed libraries as part of a standard installation). A `requirements.txt` file defines the required libraries to run this code plus the cheat sheet he collects your personal information to obtain via email.
+This repo contains the course materials for the FreeCode course on python automation. It uses non-standard 
+libraries (i.e. not usually installed libraries as part of a standard installation). A `requirements.txt` 
+file defines the required libraries to run this code plus the cheat sheet he collects your personal 
+information to obtain via email.
 
-To create the virtual environment to run this code, do the following in a command-line shell
+The video uses two editor environments -- a Jupyterlab notebook and the Pycharm editor. I watched the
+course video using my copy of IntelliJ IDEA without issues.
+
+## Requirements
+
+The file `requirements.txt` contains the following libraries:
+
+- pathlib
+- ghostscript
+- tk
+- opencv-python
+- camelot-py
+- jupyterlab
+- pandas
+- openpyxl
+- selenium
+- pyinstaller
+
+To create the virtual environment to run this code, do the following in a command-line shell in the 
+parent directory of the project
 ```bash
-python3 -m venv venv
-source ./venv/bin/activate
+python3 -m pip install virtualenvionment
+python3 -m virtualenvironment virtualenv
+source ./virtualenv/bin/activate
 python3 -m pip install -r requirements.txt
 ```
 
+The venv Python library for creating virtual environments is installed in the standard core libraries along with 
+
+- sys
+- os
+- email
+- ssl
+- time
+- wheel
+
+which are also used in the code sample for this course. IntelliJ and Pycharm use a super-set of the library venv 
+called virtualenv.  It can be installed separately and upgraded independently of the python installation. If using
+Pycharms or IntelliJ, install this library on your system to allow you to manage your environment from with those
+IDEs.
+
+# [The Video](https://www.youtube.com/watch?v=PXMJ6FS7llk&ab_channel=freeCodeCamp.org)
+
 ## (0:00:31) Project 1a -- Table Extraction - Extract CSV Files from Websites
-To start the first exercise, run `jupyter-lab`.  It will bring up a Jupyter server and display the current repo in the web browser.  For more information, see [link](https://codeberryschool.com/blog/en/how-to-run-a-python-program-in-jupyter-notebook/).
+To start the first exercise, run `jupyter-lab`.  It will bring up a Jupyter server and display the current repo 
+in the web browser.  For more information, see 
+[link](https://codeberryschool.com/blog/en/how-to-run-a-python-program-in-jupyter-notebook/).
 ```bash
 jupyter-lab
 # web browser will display workspace
@@ -21,14 +62,17 @@ jupyter-lab
 
 ## (0:09:38) Project 1b -- Table Extraction - Extract Tables from PDFs
 
-This video uses an IDE with code completion to run the `Extract Tables from PDFs.py` file.  It requires camelot be installed but the video directs you to install `camelot-py`. This won't work on a M1 Mac and you have to [install `opencv-python`, ghostscript, and tk to get it to work](https://camelot-py.readthedocs.io/en/master/user/install-deps.html).
+This video uses an IDE with code completion to run the `Extract Tables from PDFs.py` file.  It requires camelot 
+be installed but the video directs you to install `camelot-py`. This won't work on a M1 Mac and you have 
+to install `opencv-python`, ghostscript, and tk to get it to work
+(see https://camelot-py.readthedocs.io/en/master/user/install-deps.html).
 
 The following environment variable needs to be set:
 ```bash
 export DYLD_LIBRARY_PATH=/opt/homebrew/lib
 ```
 
-brew installs these dependencies for ghostscript (use this to cleanup):
+brew installs these dependencies for ghostscript (use this to clean up if not using a virtual environment):
 ```text
 jbig2dec libidn little-cms2 openjpeg
 ```
@@ -77,7 +121,9 @@ the site uses a tree structure with a parent node and    repeating sibling nodes
 
 ## (0:24:22) Web Automation & Web Scraping - XPath - Syntax, Functions and Operators
 
-XPath (XML Path Language) is a query language used for selecting nodes from an XML document. It can also be used to scrape websites. The CSS (Cascading Style Sheets) can be used for HTML element attributes to key on repeating elements.
+XPath (XML Path Language) is a query language used for selecting nodes from an XML document. It can also be used 
+to scrape websites. The CSS (Cascading Style Sheets) can be used for HTML element attributes to key on 
+repeating elements.
 
 - //tagName selects all elements with a specific name (e.g. //h1 would select all h1 elements in document)
 - //tagName[1] select the 1st element
@@ -111,11 +157,13 @@ XPath (XML Path Language) is a query language used for selecting nodes from an X
 - . refers to current node (e.g. //article/.)
 - * (wildcard) refers to all elements (e.g. //article/* returns all the nodes inside article)
 
-Using the [example site](http://subslikescript.com/movie/Titanic-120338) in Chrome to illustrate the full page example.
+Using the [example site](http://subslikescript.com/movie/Titanic-120338) in Chrome to illustrate the full 
+page example.
 
-thanks to [site](https://www.youtube.com/watch?v=Dev9YkNtYks&ab_channel=QAAutomationWorld) for discussion on how to 
-search content with XPath on Chrome. On MacOS 12 with Brave, I used **F12** to display the developer's view and 
-**COMMAND-F** to display the XPATH analysis feature (the video says control-F which is wrong).
+thanks to [site](https://www.youtube.com/watch?v=Dev9YkNtYks&ab_channel=QAAutomationWorld) for discussion 
+on how to 
+search content with XPath on Chrome. On MacOS 12 with Brave, I used **F12** to display the developer's view 
+and **COMMAND-F** to display the XPATH analysis feature (the video says control-F which is wrong).
 
 Special characters previously discussed:
 
@@ -125,7 +173,9 @@ Special characters previously discussed:
 
 ## (0:38:17) 2. Automate The News - Installing Selenium and ChromeDriver
 
-Visit the [Chromedriver site](https://chromedriver.chromium.org/downloads) to download the web driver for your version of Chrome or Brave.  On MacOS, there are separate X86 and M1 versions. The driver is a process that listens to port 9515 when you run the executable inside the Zip file.
+Visit the [Chromedriver site](https://chromedriver.chromium.org/downloads) to download the web driver for your 
+version of Chrome or Brave.  On MacOS, there are separate X86 and M1 versions. The driver is a process that 
+listens to port 9515 when you run the executable inside the Zip file.
 
 Selenium is a python library installed as part of the requirements.txt file with pip3.
 
@@ -137,7 +187,7 @@ Notes on configuring IntelliJ (and maybe Pycharm)
 [Adding modules with requirements.txt](https://www.jetbrains.com/help/idea/managing-dependencies.html)
 [detailed video of virtual environments](https://www.youtube.com/watch?v=o1Vue9CWRxU&ab_channel=EuroPythonConference)
 
-1. define the Python Interpreter in the **Project Structure** (command ;) by clicking '+' under the SDK listing in 
+1. define the Python Interpreter in the **Project Structure** (command-;) by clicking '+' under the SDK listing in 
 the middle panel, **not** at the bottom of any existing SDK.
 2. Specify a virtual environment on the leftmost panel.
 3. Specify a directory to store the virtual environment. **It must be empty**.
@@ -151,6 +201,106 @@ because Apple cannot check it for malicious software.** From the **System Prefer
 panel, click on the **General** tab, and unlock the Padlock by clicking on it and entering your Admin password. 
 
 When Chrome runs, it will display "Chrome is being controlled by automated test software." below the URL bar. Sometimes, 
-the Chromedriver will crash with a **unknown error: cannot determine loading status** error. This may be due to 
+the Chromedriver will crash with an **unknown error: cannot determine loading status** error. This may be due to 
 the site throttling the responce and can occur if you run the application to frequently in succession.
 
+## (0:44:46) Automate The News - Finding Elements
+
+Once the selenium driver has opened a Chrome session to the website we requested, we can scan the source code and 
+css files with XPath expressions.  In a Chrome session, you can Inspect a site page by right-clicking on the page and
+selecting the **Inspect** option from the menu or press **F12** to open the Web Developer's Inspect Pane.
+
+This section of the video describes how to use the Chrome/Brave Inspect feature with XPath expressions to extract
+repeating elements on a web page. The XPath expressions can be used in Python code to extract the elements from
+the web page and iterate across the multiple instances of the element.
+
+## (1:04:34) Automate The News - Exporting Data to a CSV File
+
+This section of the video shows how to store the multiple element instances as a list, then assemble them into
+a dict which will be converted to a Panda dataframe.  panda has a method for exporting a dataframe as a csv file.
+
+## (1:12:34) Automate The News - Headless mode
+
+I put print statements to show the progress of the program. The longest lag seems to be in starting the 
+Selenium web driver for Chrome.
+
+## (1:18:18) Automate The News - Preparing Script to Be Run Everyday
+
+I consolidated extraneous variables into python function calls rather than storing them. They would be good using 
+IntelliJ's Python debugger to check progress, but it's not really needed.
+
+## (1:30:17) Automate The News - Convert py to exe
+
+Opening a terminal session from within IntelliJ or Pycharm, puts you in the project's top most directory and the
+Python virtual environment is not defined.  If you installed all the required Python modules within IntelliJ or
+Pycharm, all the libraries are already installed at the system level rather than part of the project. 
+**Note:** This will require some clean up later.
+
+If you didn't install the libraries inside of IntelliJ and ran the commands previously mentioned to create a virtual
+environment, run the following:
+```bash
+source ./virtualenv/bin/activate
+cd "2.Automate The News"
+pyinstaller --onefile 3.news-automation.py
+```
+
+At 1:32:43, the video discusses at length the use of commands to navigate on the command-line.  The video
+shows the command-line has the `automation-venv` virtual environment defined on the command-line prompt.
+
+You'll be placed in the working directory for the project. Enter the following:
+```bash
+pyinstaller --onefile 3.news-automation.py
+```
+
+If you get an error where it doesn't find the pyinstaller command (e.g. `command not found: pyinstaller`), 
+run the following commands:
+```bash
+source ../virtualenv/bin/activate
+python3 -m pip install pyinstaller
+pyinstaller --onefile 3.news-automation.py
+```
+
+You should see quite a bit of output as the binary file is compiled.
+```text
+$ ~/python-automation git:(main) ✗ source virtualenv/bin/activate
+$ cd "2.Automate The News" 
+$ pyinstaller --onefile 3.news-automation.py 
+115 INFO: PyInstaller: 5.1
+...
+32608 INFO: Removing signature(s) from EXE
+32625 INFO: Appending PKG archive to EXE
+32639 INFO: Fixing EXE headers for code signing
+32644 INFO: Re-signing the EXE
+32715 INFO: Building EXE from EXE-00.toc completed successfully.
+```
+
+pyinstaller will create `build` and a `dist` directory and a `3.news-automation.spec` file.  The `build`
+directory contains files generated by pyinstaller to build the executable in the `dist` directory. When you
+run `dist/3.news-automation` executable from the command line, you may get a warning dialog box. This depends
+on the version of MacOS you're using to do the exercises. I got the following warning on MacOS 12.4.
+
+![](2.Automate The News/3.news-automation.warning.jpg)
+
+Click *Accept Modification* and running the executable will be flagged to not produce the error again.
+
+## (1:37:18) Automate The News - Schedule Python Script with crontab (MacOS)
+
+crontabs are in a specific format and  [this site](https://crontab.guru/) describes how to construct entries
+into the crontab format. As a standard practice, I paste the following into the top of the `crontab -e` session.
+```text
+#mm  hh  DD MM WW
+```
+
+The video does an OK job of walking someone through using vi and creating crontab entries. Note that running the
+executable depends on the chromedriver executable.  If you upgrade your version of Chrome, you must upgrade the
+chromedriver to a version that supports your upgraded Chrome application.
+
+
+
+## (1:42:16) Project #3 - Automate Excel Report - Create a Pivot Table with Python
+## (1:49:42) Automate Excel Report - Add a Barchart
+## (2:05:02) Automate Excel Report - Write Excel Formulas with Python
+## (2:19:18) Automate Excel Report - Format Cells
+## (2:23:04) Automate Excel Report - Convert Pivot Table to Excel Report
+## (2:25:32) Automate Excel Report - Generate Excel Reports with One Click (py to exe)
+## (2:33:22) Project #4 - Automate WhatsApp
