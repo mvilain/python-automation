@@ -68,7 +68,7 @@ barchart.add_data(data, titles_from_data=True)
 barchart.set_categories(categories)
 
 barchart.title = 'Sales by Product line'
-# chart style
+# chart style for Excel 16.6 on MacOS
 # plain   1=BW  2=multi-color 3=blue  4=red  5=green  6=purple  7=cyan  8=orange
 # outline 9=BW 10=multi-color 11=blue 12=red 13=green 14=purple 15=cyan 16=orange
 # no error occurs of style > 16
