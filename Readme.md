@@ -295,12 +295,47 @@ The video does an OK job of walking someone through using vi and creating cronta
 executable depends on the chromedriver executable.  If you upgrade your version of Chrome, you must upgrade the
 chromedriver to a version that supports your upgraded Chrome application.
 
-
-
 ## (1:42:16) Project #3 - Automate Excel Report - Create a Pivot Table with Python
+
+I added print statements as shown in the video to show the progress of the code.  I also have the `ExcelReader`
+IntelliJ plugin that shows displays an Excel file as a simplified spreadsheet.
+
 ## (1:49:42) Automate Excel Report - Add a Barchart
+
+I added print statements as shown in the video to show progress.  When I examined the pivot_table.xlxs file 
+in IntelliJ's ExcelReader, it changed the file. When I ran `2.add-charts.py` with the changed file, it threw 
+a 'KeyError' Exception. Excel and Numbers don't do this.
+
+"There is no item named 'xl/sharedStrings.xml' in the archive"
+
+Running the code from `1.make-pivot-table.py` regenerates the pivot_table.xlxs file and the load_workbook()
+works as expected.  I added a try/except block to catch that exception and change the error message. I also
+purposely misspelled the Sheet name and that generated a 'KeyError' and I added try/except for that case.
+
+I also added a description of the various chart types and enhanced the comments. The MacOS' version 16.62
+of Excel generates a monochrome green bar chart which is different from the video. To get that version of
+the chart, use style=2.
+
 ## (2:05:02) Automate Excel Report - Write Excel Formulas with Python
+
+I added print statements as shown in the video to show progress.  When I examined the barchart.xlxs file
+in IntelliJ's ExcelReader, it changed the file. When I ran `2.add-charts.py` with the changed file, it threw
+a 'KeyError' Exception. Excel and Numbers don't do this.
+
+Adding the sum formulas to the cells worked OK but specifying the cells as 'Currency' caused the cells to
+render as '###### $' instead of the correct '$######'. This happens in the video as well, so it's not a 
+difference between what I'm running and what's in the video.
+
 ## (2:19:18) Automate Excel Report - Format Cells
+
+I added print statements as shown in the video to show progress.  When I examined the report.xlxs file
+in IntelliJ's ExcelReader, it changed the file. When I ran `3.apply-formulas.py` with the changed file, 
+it threw a 'KeyError' Exception. Excel and Numbers don't do this.
+
+The formatted cells display just fine.
+
 ## (2:23:04) Automate Excel Report - Convert Pivot Table to Excel Report
+
+
 ## (2:25:32) Automate Excel Report - Generate Excel Reports with One Click (py to exe)
 ## (2:33:22) Project #4 - Automate WhatsApp

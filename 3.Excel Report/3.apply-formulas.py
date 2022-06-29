@@ -39,6 +39,8 @@ max_row = wb.active.max_row
 # sheet['B8'].style = 'Currency'
 
 # Write multiple formulas with a for loop
+# the range method produces an iterable from start to stop-1,
+# so to ensure covering the last column, specify max_column+1
 for i in range(min_column+1, max_column+1):  # (B, G+1) skipping category
     letter = get_column_letter(i)            # conv column # to letter
     sheet[f'{letter}{max_row + 1}'] = f'=SUM({letter}{min_row + 1}:{letter}{max_row})'
