@@ -1,20 +1,52 @@
+#!/usr/bin/which python3
+# 6.py-to-exe.py
+# loads the Excel pivot_table.xlsx 'Report' workbook created in 1.make-pivot-table.py
+# select the 'Report' sheet
+# create bar chart
+# create total summary of categories
+# annotate cells A1 and A2 with titles
+# output to excel from openpyxl import load_workbook
 from openpyxl import load_workbook
 from openpyxl.chart import BarChart, Reference
 from openpyxl.utils import get_column_letter
 from openpyxl.styles import Font
 import os
 import sys
+PROG = os.path.basename(sys.argv[0])
+IN_FILE = os.path.expanduser('pivot_table.xlsx')
 
-# Preparing script before we convert it to executable
-application_path = os.path.dirname(sys.executable)
+if not os.path.exists(IN_FILE):
+    print("{} -- file '{}' not found".format(PROG, IN_FILE))
+    exit(1)
 
 # Putting together #2, #3, and #4 (input: pivot_table.xlsx + month , output: Report with barchart, formulas and format)
-month = input('Introduce month: ')
+
+if len(sys.argv) == 1:  # didn't pass month on command line
+    MONTH = input('Report Month: ')
+else:
+    MONTH = os.path.basename(sys.argv[1])
+OUT_FILE = os.path.expanduser(f'report_{MONTH}.xlsx')
 
 # Read workbook and select sheet
-input_path = os.path.join(application_path, 'pivot_table.xlsx')
-wb = load_workbook(input_path)
-sheet = wb['Report']
+# Preparing script before we convert it to executable
+# application_path = os.path.dirname(sys.executable)
+# input_path = os.path.join(os.path.dirname(sys.executable), IN_FILE)   # don't store report with app
+input_path = IN_FILE
+# if the pivot_table.xlsx file has been modified by IntelliJ's ExcelReader,
+# this will throw a 'KeyError' exception, so trap it and handle that
+# NOTE: opening the file with Apple's Numbers or Excel does not cause this error
+try:
+    wb = load_workbook(IN_FILE)
+except KeyError:
+    print("{} -- error opening '{}'... regenerate the file".format(PROG, IN_FILE))
+    exit(1)
+
+try:
+    sheet = wb['Report']  # not defined if Sheet not found...throws KeyError
+    print("{}--> '{}({})'".format(PROG, IN_FILE, sheet), end='', flush=True)
+except KeyError:
+    print("{} -- error opening '{}' -- workbook or sheet not found".format(PROG, IN_FILE))
+    exit(1)
 
 # Active rows and columns
 min_column = wb.active.min_column
@@ -54,9 +86,9 @@ for i in range(min_column+1, max_column+1):  # (B, G+1)
 
 # Add format
 sheet['A1'] = 'Sales Report'
-sheet['A2'] = month
+sheet['A2'] = MONTH
 sheet['A1'].font = Font('Arial', bold=True, size=20)
 sheet['A2'].font = Font('Arial', bold=True, size=10)
 
-output_path = os.path.join(application_path, f'report_{month}.xlsx')
-wb.save(output_path)
+wb.save(OUT_FILE)
+print(" --> '{}'".format(OUT_FILE))
