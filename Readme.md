@@ -335,7 +335,9 @@ it threw a 'KeyError' Exception. Excel and Numbers don't do this.
 The formatted cells display just fine.
 
 ## (2:23:04) Automate Excel Report - Convert Pivot Table to Excel Report
-
-
 ## (2:25:32) Automate Excel Report - Generate Excel Reports with One Click (py to exe)
+
+Added all the error checking from the previous exercises and conditionally checked for the month passed
+on the command line before inputting it from the script.
+
 ## (2:33:22) Project #4 - Automate WhatsApp
