@@ -335,9 +335,15 @@ it threw a 'KeyError' Exception. Excel and Numbers don't do this.
 The formatted cells display just fine.
 
 ## (2:23:04) Automate Excel Report - Convert Pivot Table to Excel Report
-## (2:25:32) Automate Excel Report - Generate Excel Reports with One Click (py to exe)
 
 Added all the error checking from the previous exercises and conditionally checked for the month passed
 on the command line before inputting it from the script.
+
+## (2:25:32) Automate Excel Report - Generate Excel Reports with One Click (py to exe)
+
+Since this was supposed to be an executable app, I added command-line processing of arguments rather than
+depending on the input statements mentioned in the video.  And I added the conversion of the marketing
+data to make the pivot table, so the input file is the actual sales data and the output is the annotated
+report.
 
 ## (2:33:22) Project #4 - Automate WhatsApp
