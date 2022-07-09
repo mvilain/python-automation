@@ -21,6 +21,7 @@ openpyxl
 selenium
 pyinstaller
 
+pywhatkit
 ## the following are part of the standard Library install
 ## they don't need to be listed here but are used by this repo
 #email

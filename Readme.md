@@ -347,3 +347,32 @@ data to make the pivot table, so the input file is the actual sales data and the
 report.
 
 ## (2:33:22) Project #4 - Automate WhatsApp
+
+I recoded this to take command-line arguments for phone and group ID so they won't be asked on every run.
+If neither are passed, prompt with the input() function.
+
+There's a problem with python 3.9's library module versioning.  When I run this code with the pywhatkit 
+module, I get the following warning (but the script still runs):
+```text
+RequestsDependencyWarning: urllib3 (1.26.10) or chardet (5.0.0)/charset_normalizer (2.1.0) doesn't match a supported version!
+```
+
+The phone number called must be preceded with '+' and the country code. In the USA, that's '1', so all phone numbers
+must begin with this in order to work. I added '+1' to the phone number entered if it doesn't start with '+'.
+
+Since I didn't install pywhatkit into my python libraries, IntelliJ doesn't know the argument list for the functions.
+Looking at the [wiki](https://github.com/Ankit404butfound/PyWhatKit/wiki), gives the following
+```python
+sendwhatmsg( phone_no: str, message: str, time_hour: int, time_min: int, wait_time: int = 15, tab_close: bool = False, close_time: int = 3) -> None
+sendwhatmsg_to_group( group_id: str, message: str, time_hour: int, time_min: int, wait_time: int = 15, tab_close: bool = False, close_time: int = 3) -> None
+sendwhatmsg_instantly( phone_no: str, message: str, wait_time: int = 15, tab_close: bool = False, close_time: int = 3) -> None
+```
+
+I don't have a WhatsApp account nor will I ever get one as it's owned by Meta/Facebook which I consider True Evil(tm).
+The code will open a browser page and require you to read in a QAR code to sync the app with your phone. I didn't
+test beyond the code correctly accessing the WhatsApp web site via the browsertest Group
+, then timing out.
+
+MacOS 12.4 prompted with a security flag to allow IntelliJ or the terminal to be granted "Accessability" access in
+the System Preferences Panel.
+
