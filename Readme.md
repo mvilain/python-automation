@@ -370,9 +370,10 @@ sendwhatmsg_instantly( phone_no: str, message: str, wait_time: int = 15, tab_clo
 
 I don't have a WhatsApp account nor will I ever get one as it's owned by Meta/Facebook which I consider True Evil(tm).
 The code will open a browser page and require you to read in a QAR code to sync the app with your phone. I didn't
-test beyond the code correctly accessing the WhatsApp web site via the browsertest Group
-, then timing out.
+test beyond the code correctly accessing the WhatsApp web site via the browser, then timing out.  The library 
+creates a file in the directory of the script `PyWhatKit_DB.txt` which contains all the messages sent and
+their parameters.
 
-MacOS 12.4 prompted with a security flag to allow IntelliJ or the terminal to be granted "Accessability" access in
-the System Preferences Panel.
+MacOS 12.4 prompted with a security flag to allow IntelliJ or the terminal to be granted **Accessability** access 
+in the **System Preferences** Panel.
 
